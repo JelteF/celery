@@ -551,7 +551,7 @@ class Events(bootsteps.StartStopStep):
         # flush events sent while connection was down.
         prev = self._close(c)
         dis = c.event_dispatcher = c.app.events.Dispatcher(
-            c.connect(), hostname=c.hostname,
+            c.connection, hostname=c.hostname,
             enabled=self.send_events, groups=self.groups,
         )
         if prev:
